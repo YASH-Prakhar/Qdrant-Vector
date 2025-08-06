@@ -1,1 +1,4 @@
 qdrant-client
+pydantic
+requests 
+python-dotenv
