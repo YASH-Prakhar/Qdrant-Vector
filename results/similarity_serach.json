@@ -1,0 +1,128 @@
+{
+    "guitar_sample_results" :  [
+        {
+            "score": 0.8683913,
+            "payload": {
+                "filename": "093.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 30.04,
+                "file_size_mb": 0.35,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:12:16.427651"
+            }
+        },
+        {
+            "score": 0.83115184,
+            "payload": {
+                "filename": "401.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 29.68,
+                "file_size_mb": 0.34,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:12:03.783519"
+            }
+        },
+        {
+            "score": 0.8126589,
+            "payload": {
+                "filename": "Background Music Relaxing Day In Paris - Pyrosion Free Royalty Free Music No Copyright Music LoFi.wav",
+                "session": "session_1",
+                "zip_source": "youtube-royalty-free",
+                "duration": 60.0,
+                "file_size_mb": 3.71,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T20:00:34.857498"
+            }
+        },
+        {
+            "score": 0.812538,
+            "payload": {
+                "filename": "313.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 29.68,
+                "file_size_mb": 0.34,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:15:08.691976"
+            }
+        },
+        {
+            "score": 0.81028044,
+            "payload": {
+                "filename": "First Of The Last - Silent Partner  Royalty Free Music - No Copyright Music  YouTube Music.wav",
+                "session": "session_1",
+                "zip_source": "youtube-royalty-free",
+                "duration": 60.0,
+                "file_size_mb": 1.93,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T19:59:14.323671"
+            }
+        }
+    ],
+
+    "lofi_sample_results": [
+        {
+            "score": 0.88482374,
+            "payload": {
+                "filename": "C Major Prelude - Bach  Royalty Free Music - No Copyright Music  YouTube Music.wav",
+                "session": "session_1",
+                "zip_source": "youtube-royalty-free",
+                "duration": 60.0,
+                "file_size_mb": 2.02,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T20:01:24.464886"
+            }
+        },
+        {
+            "score": 0.87312704,
+            "payload": {
+                "filename": "530.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 29.68,
+                "file_size_mb": 0.34,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:12:52.921038"
+            }
+        },
+        {
+            "score": 0.85297686,
+            "payload": {
+                "filename": "Background Music Relaxing Day In Paris - Pyrosion Free Royalty Free Music No Copyright Music LoFi.wav",
+                "session": "session_1",
+                "zip_source": "youtube-royalty-free",
+                "duration": 60.0,
+                "file_size_mb": 3.71,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T20:00:34.857498"
+            }
+        },
+        {
+            "score": 0.8525455,
+            "payload": {
+                "filename": "181.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 29.68,
+                "file_size_mb": 0.34,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:13:17.855309"
+            }
+        },
+        {
+            "score": 0.84964687,
+            "payload": {
+                "filename": "465.mp3",
+                "session": "session_1",
+                "zip_source": "english-song-snippet",
+                "duration": 27.14,
+                "file_size_mb": 0.31,
+                "embedding_dim": 768,
+                "processed_at": "2025-08-07T15:15:50.633630"
+            }
+        }
+    ]
+}
+    
