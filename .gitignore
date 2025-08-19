@@ -20,3 +20,9 @@ dist/
 #qdrant documentation
 /Qdrant Documentation.docx
 
+# temp folder
+.tmp
+
+# specific folders
+data/english-song-snippet
+data/youtube-royalty-free

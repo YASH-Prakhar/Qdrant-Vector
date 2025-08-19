@@ -19,7 +19,7 @@ COLLECTION_NAME = "audio_collection"
 # Example 1: Delete a specific point by ID
 def delete_point_by_id():
     """Delete a point with specific ID"""
-    point_id = 1
+    point_id = 2
     
     client.delete(
         collection_name=COLLECTION_NAME,
@@ -167,13 +167,13 @@ if __name__ == "__main__":
         
         # Delete specific points
         delete_point_by_id()
-        delete_multiple_points()
+        # delete_multiple_points()
         
         # Delete by filter
-        delete_points_by_filter()
-        delete_by_payload()
-        delete_by_duration()
-        delete_by_file_size()
+        # delete_points_by_filter()
+        # delete_by_payload()
+        # delete_by_duration()
+        # delete_by_file_size()
         
         # Check status after deletions
         check_collection()

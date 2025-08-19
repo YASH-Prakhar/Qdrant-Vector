@@ -36,7 +36,7 @@ client = QdrantClient(
 COLLECTION_NAME = "audio_collection"
 
 # Prepare query embedding from audio file
-query_embedding = get_audio_embedding(f"data\lofi-sample.wav")  # Path to your query file in the data folder
+query_embedding = get_audio_embedding(audio_path)  # Path to your query file in the data folder
 
 # Perform search in Qdrant
 search_result = client.search(

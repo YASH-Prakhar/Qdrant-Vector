@@ -16,6 +16,13 @@ processor = Wav2Vec2Processor.from_pretrained("facebook/wav2vec2-base")
 model = Wav2Vec2Model.from_pretrained("facebook/wav2vec2-base")
 model.eval()
 
+""" what is happening - 
+#   Update metadata only
+#   Update vector embedding as well as metadata
+#   Update Multiple points based on some condition
+#   Update points in batches
+"""
+
 def get_audio_embedding(audio_path):
     """Generate embedding from audio file"""
     # Load audio (mono, 16kHz)
@@ -45,11 +52,11 @@ def update_metadata():
     
     # Update the payload
     updated_payload = {
-        "filename": "updated_audio.wav",
-        "session": "session_1",
-        "zip_source": "updated-source",
-        "duration": 30.5,
-        "file_size_mb": 0.5,
+        "filename": "updated_audio_part_2.wav",
+        "session": "session_2",
+        "zip_source": "updated-audio-source",
+        "duration": 35,
+        "file_size_mb": 0.44,
         "embedding_dim": 768,
         "processed_at": "2025-08-07T15:11:54.008172"
     }
@@ -68,16 +75,16 @@ def update_vector_and_metadata():
     point_id = 2
     
     # Generate new embedding from updated audio file
-    new_embedding = get_audio_embedding("data/guitar_sample.wav")
+    new_embedding = get_audio_embedding("data/lofi-sample.wav")
     
     # Update both vector and payload
     updated_point = PointStruct(
         id=point_id,
         vector=new_embedding.tolist(),
         payload={
-            "filename": "guitar_sample_updated.wav",
+            "filename": "lofi_sample_updated.wav",
             "session": "session_1",
-            "zip_source": "guitar-samples",
+            "zip_source": "lofi-samples",
             "duration": 30.5,
             "file_size_mb": 0.8,
             "embedding_dim": len(new_embedding),
@@ -93,78 +100,65 @@ def update_vector_and_metadata():
     print(f"✅ Updated vector and metadata for point {point_id}")
 
 # # Example 3: Update multiple points by filter
-# def update_multiple_points():
-#     """Update all points with session 'session_1'"""
+def update_multiple_points():
+    """Update all points with session 'session_1'"""
     
-#     # Create filter for points with session 'session_1'
-#     filter_condition = Filter(
-#         must=[
-#             FieldCondition(
-#                 key="session",
-#                 match=MatchValue(value="session_1")
-#             )
-#         ]
-#     )
+    # Create filter for points with session 'session_1'
+    filter_condition = Filter(
+        must=[
+            FieldCondition(
+                key="session",
+                match=MatchValue(value="session_1")
+            )
+        ]
+    )
     
-#     # Update payload for matching points
-#     updated_payload = {
-#         "zip_source": "updated-english-songs",
-#         "processed_at": "2025-08-07T15:11:54.008172"
-#     }
+    # Update payload for matching points
+    updated_payload = {
+        "zip_source": "updated-english-songs",
+        "processed_at": "2025-08-07T15:11:54.008172"
+    }
     
-#     client.set_payload(
-#         collection_name=COLLECTION_NAME,
-#         payload=updated_payload,
-#         points=filter_condition
-#     )
+    client.set_payload(
+        collection_name=COLLECTION_NAME,
+        payload=updated_payload,
+        points=filter_condition
+    )
     
-#     print("✅ Updated all points from session_1")
+    print("✅ Updated all points from session_1")
 
 # # Example 4: Batch update multiple points
-# def batch_update():
-#     """Update multiple points in batch"""
+def batch_update():
+    """Update multiple points in batch"""
     
-#     # Get existing points to update
-#     existing_points = client.scroll(
-#         collection_name=COLLECTION_NAME,
-#         limit=3
-#     )[0]
+    # Get existing points to update
+    existing_points = client.scroll(
+        collection_name=COLLECTION_NAME,
+        limit=3
+    )[0]
     
-#     updated_points = []
-#     for point in existing_points:
-#         # Keep existing vector, update payload
-#         updated_point = PointStruct(
-#             id=point.id,
-#             vector=point.vector,
-#             payload={
-#                 **point.payload,  # Keep existing payload
-#                 "zip_source": f"{point.payload.get('zip_source', 'unknown')}-updated",
-#                 "processed_at": "2025-08-07T15:11:54.008172"
-#             }
-#         )
-#         updated_points.append(updated_point)
+    updated_points = []
+    for point in existing_points:
+        # Keep existing vector, update payload
+        updated_point = PointStruct(
+            id=point.id,
+            vector=point.vector,
+            payload={
+                **point.payload,  # Keep existing payload
+                "zip_source": f"{point.payload.get('zip_source', 'unknown')}-updated",
+                "processed_at": "2025-08-07T15:11:54.008172"
+            }
+        )
+        updated_points.append(updated_point)
     
-#     # Batch update
-#     client.upsert(
-#         collection_name=COLLECTION_NAME,
-#         points=updated_points
-#     )
+    # Batch update
+    client.upsert(
+        collection_name=COLLECTION_NAME,
+        points=updated_points
+    )
     
-#     print(f"✅ Batch updated {len(updated_points)} points")
+    print(f"✅ Batch updated {len(updated_points)} points")
 
-# # Example 5: Verify updates
-# def verify_updates():
-#     """Check that updates were applied"""
-    
-#     # Get updated points
-#     updated_points = client.scroll(
-#         collection_name=COLLECTION_NAME,
-#         limit=5
-#     )[0]
-    
-#     print("📊 Updated points:")
-#     for point in updated_points:
-#         print(f"ID: {point.id}, Payload: {point.payload}")
 
 # Run examples
 if __name__ == "__main__":
@@ -181,8 +175,5 @@ if __name__ == "__main__":
     
     # # Batch update
     # batch_update()
-    
-    # # Verify updates
-    # verify_updates()
     
     print("🎉 Update examples completed!")

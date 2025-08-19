@@ -10,6 +10,11 @@ collections_to_create = [
                 "collection_name": "combined_audio_collection",
                 "vectors_config": VectorParams(size=768, distance=Distance.COSINE),
                 "timeout": 20,
+            },
+            {
+                "collection_name": "text_collection",
+                "vectors_config": VectorParams(size=768, distance=Distance.COSINE),
+                "timeout":20,
             }
             # Add more collections here as needed
             # {
