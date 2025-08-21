@@ -10,7 +10,7 @@
 # =============================================================================
 
 # Install required packages
-!pip install qdrant-client transformers librosa torch soundfile tqdm
+# pip install qdrant-client transformers librosa torch soundfile tqdm
 
 # Check GPU
 import torch
@@ -42,15 +42,15 @@ print(f"🎯 Target collection: {QDRANT_CONFIG['collection_name']}")
 # PART 3: AUDIO PROCESSING CLASSES
 # =============================================================================
 
+import os
+import json
+import zipfile
 import librosa
 import numpy as np
-from transformers import Wav2Vec2Processor, Wav2Vec2Model
 from tqdm import tqdm
-import json
-from datetime import datetime
 from pathlib import Path
-import zipfile
-import os
+from datetime import datetime
+from transformers import Wav2Vec2Processor, Wav2Vec2Model
 
 class AudioEmbeddingGenerator:
     def __init__(self, model_name="facebook/wav2vec2-base"):
@@ -108,7 +108,8 @@ class AudioEmbeddingGenerator:
 # PART 4: ZIP UPLOAD AND PROCESSING
 # =============================================================================
 
-from google.colab import files
+# For Google Colab, uncomment the following line to enable file uploads
+# from google.colab import files
 
 def upload_and_extract_zip():
     """Upload ZIP file from local computer and extract"""

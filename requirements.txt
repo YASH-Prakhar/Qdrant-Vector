@@ -2,3 +2,11 @@ qdrant-client
 pydantic
 requests 
 python-dotenv
+fastapi
+uvicorn
+jinja2
+python-multipart
+transformers
+torch
+librosa
+numpy
