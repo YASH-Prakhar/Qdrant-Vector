@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Qdrant Audio Search</title>
+	<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Qdrant Audio Similarity Search</h1>
+			<p>Upload an audio file to find the top 5 most similar tracks.</p>
+			<p class="sources">Searching within: {{ ", ".join(sources) }}</p>
+		</header>
+
+		<section class="upload">
+			<form action="/search" method="post" enctype="multipart/form-data">
+				<input type="file" name="file" accept="audio/*" required />
+				<button type="submit">Search</button>
+			</form>
+			{% if uploaded_filename %}
+				<p class="hint">Uploaded: <strong>{{ uploaded_filename }}</strong></p>
+			{% endif %}
+		</section>
+
+		{% if results %}
+		<section class="results">
+			<h2>Top 5 Results</h2>
+			<ul class="result-list">
+				{% for item in results %}
+				<li class="result-item">
+					<div class="meta">
+						<div class="line"><span class="label">Filename:</span> {{ item.filename }}</div>
+						<div class="line"><span class="label">Score:</span> {{ '%.4f'|format(item.score) }}</div>
+						<div class="line"><span class="label">Collection:</span> {{ item.collection }}</div>
+						<div class="line"><span class="label">Duration:</span> {{ item.duration }}s</div>
+						<div class="line"><span class="label">Source:</span> {{ item.zip_source }}</div>
+					</div>
+					<audio controls preload="none" src="{{ item.audio_url }}"></audio>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
+
+		<footer>
+			<p>Local demo for Qdrant vector search · Runs on my machine</p>
+		</footer>
+	</div>
+</body>
+</html> 

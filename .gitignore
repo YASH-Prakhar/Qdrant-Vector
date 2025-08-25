@@ -1,0 +1,28 @@
+# Environment variables
+.env
+venv/
+
+# Python cache
+__pycache__/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+#qdrant documentation
+/Qdrant Documentation.docx
+
+# temp folder
+.tmp
+
+# specific folders
+data/english-song-snippet
+data/youtube-royalty-free
